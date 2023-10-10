@@ -7,55 +7,53 @@ import DataTable from '../../components/dataTable/DataTable';
 import { userRows } from '../../data';
 import { useState } from 'react';
 import Add from '../../components/add/Add';
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'img', headerName: 'Avatar', width: 100,
+    renderCell: (params)=>{
+      return <img src={params.row.img || noavatar} alt=""/>
+    }
+  },
+  {
+    field: 'firstName',
+    headerName: 'First name',
+    width: 150,
+    type:"string"
+  },
+  {
+    field: 'lastName',
+    headerName: 'Last name',
+    width: 150,
+    type:"string"
+  },
+  {
+    field: 'email',
+    type: 'string',
+    headerName: 'Email',
+    width: 200,
+  },
+  {
+    field: 'phone',
+    type: 'string',
+    headerName: 'Phone',
+    width: 150,
+  },
+  {
+    field: 'createdAt',
+    type: 'string',
+    headerName: 'CreatedAt',
+    width: 200,
+  },
+  {
+    field: 'verified',
+    type: 'boolean',
+    headerName: 'Verified',
+    width: 150,
+  }
+];
 
 const Users = () => {
   const [ open , setOpen] = useState(false);
-
-  const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'img', headerName: 'Avatar', width: 100,
-      renderCell: (params)=>{
-        return <img src={params.row.img || noavatar} alt=""/>
-      }
-    },
-    {
-      field: 'firstName',
-      headerName: 'First name',
-      width: 150,
-      type:"string"
-    },
-    {
-      field: 'lastName',
-      headerName: 'Last name',
-      width: 150,
-      type:"string"
-    },
-    {
-      field: 'email',
-      type: 'string',
-      headerName: 'Email',
-      width: 200,
-    },
-    {
-      field: 'phone',
-      type: 'string',
-      headerName: 'Phone',
-      width: 150,
-    },
-    {
-      field: 'createdAt',
-      type: 'string',
-      headerName: 'CreatedAt',
-      width: 200,
-    },
-    {
-      field: 'verified',
-      type: 'boolean',
-      headerName: 'Verified',
-      width: 150,
-    }
-  ];
-
   return (
     <div className='users'>
       <div className="info">
